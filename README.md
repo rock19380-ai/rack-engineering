@@ -1,5 +1,7 @@
 # RACK Engineering Showcase
 
+[![CI](https://github.com/rock19380-ai/rack-engineering/actions/workflows/ci.yml/badge.svg)](https://github.com/rock19380-ai/rack-engineering/actions/workflows/ci.yml)
+
 **Production-grade machine-payment infrastructure for paid MCP tools and machine-facing APIs.**
 
 This is a curated public engineering showcase for **Rust Agent Commerce Kit (RACK)**. The commercial implementation remains private and authoritative; this repository is not a source mirror.
