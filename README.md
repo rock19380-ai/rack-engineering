@@ -1,62 +1,25 @@
-# RACK Engineering Showcase
+# Rust Agent Commerce Kit
 
-[![CI](https://github.com/rock19380-ai/rack-engineering/actions/workflows/ci.yml/badge.svg)](https://github.com/rock19380-ai/rack-engineering/actions/workflows/ci.yml)
+**Production-grade commerce infrastructure for paid MCP tools and machine APIs.**
 
-**Production-grade machine-payment infrastructure for paid MCP tools and machine-facing APIs.**
+RACK focuses on the hard production guarantees around machine-native payments: canonical resource/payment binding, replay-safe execution, durable once-only authority, settlement ambiguity and recovery, x402/MPP semantic separation, raw-wire interoperability proof, and reproducible qualification evidence.
 
-This is a curated public engineering showcase for **Rust Agent Commerce Kit (RACK)**. The commercial implementation remains private and authoritative; this repository is not a source mirror.
+## What the paid product proves
 
-## What RACK is designed to solve
+- x402 paid MCP raw-wire conformance;
+- x402 Base and Solana support behind protocol-neutral durable authority;
+- MPP Tempo charge without forcing false x402 semantics;
+- canonical route/resource security;
+- replay/idempotency convergence;
+- fenced execution and lost-response recovery;
+- result withholding on uncertain/failed settlement;
+- operator reconciliation and diagnostics;
+- evidence-bearing compatibility and upgrade qualification.
 
-RACK focuses on the hard parts around machine-native commerce rather than basic HTTP `402` handling:
+## Not just framework wiring
 
-- protocol-neutral durable commerce authority;
-- MCP/HTTP convergence;
-- exact money, asset, recipient, and network validation;
-- replay and idempotency boundaries;
-- fenced execution and durable results;
-- settlement ambiguity and proof-driven reconciliation;
-- x402 and MPP lifecycle differences;
-- Base and Solana payment profiles;
-- operator diagnostics and structured observability;
-- adversarial/concurrency testing and dependency requalification.
+Rust, Axum, PostgreSQL, MCP, x402, and MPP are implementation components—not the commercial moat. The product value is the verified behavior when retries, failures, concurrency, hostile inputs, payments, and upgrades collide.
 
-## Current private implementation status
+See `docs/architecture.md`, `docs/security-model.md`, `docs/compatibility.md`, `docs/evidence.md`, and `docs/test-matrix.md`.
 
-The audited snapshot used for this showcase has **Phase 0–6 frozen** and **Phase 7 (reconciliation, operations, and observability) in active development**. This public repository intentionally lags private development when disclosure review has not been completed.
-
-## Architecture
-
-```text
-MCP / HTTP
-    |
-    v
-Canonical Resource / Commerce Request
-    |
-    v
-Protocol-neutral durable authority
-    |
-    +--> x402 (Base / Solana)
-    |
-    +--> MPP charge lifecycle
-    |
-    v
-Replay + idempotency + payment binding
-    |
-    v
-Fenced execution authority
-    |
-    v
-Durable result / settlement
-    |
-    v
-Reconciliation + operator observability
-```
-
-## Public example
-
-`examples/domain-demo` is an independently written, dependency-free demonstration of exact atomic money representation, replay-key uniqueness, and reconciliation outcomes. It is intentionally smaller than production RACK and is not production payment code.
-
-```bash
-cargo test --manifest-path examples/domain-demo/Cargo.toml
-```
+The complete commercial implementation, replay/execution/reconciliation engines, protocol adapters, and adversarial harness remain private.
